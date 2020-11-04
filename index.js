@@ -20,7 +20,7 @@ async function main() {
 
 async function runCommandWithXvfb(command, directory) {
     await exec.exec("sudo apt-get install xvfb");
-    command = `xvfb-run --auto-servernum ${command}`;
+    command = `xvfb-run --auto-servernum --server-args="-screen 0 1024x768x24" ${command}`;
 
     try {
         await runCommand(command, directory)
